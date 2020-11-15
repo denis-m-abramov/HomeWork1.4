@@ -129,18 +129,23 @@ for i in 1... {
  ### Задание 5
   5.1 На 10 метровый столб лезет черепашка. За день она забирается на два метра, за ночь съезжает на 1. Определите при помощи цикла, через сколько дней она заберетсья на столб. Подумайте над тем, какой цикл использовать в этой ситуации.
  */
-//var riseUp = 2
-//var sinkingDown = 1
-//var goalStart = 0
-//var goalEnd = 10
-//var day: Int
-//
-//while goalStart < goalEnd  {
-//    goalStart += riseUp - sinkingDown
-//}
-//print("Через \(day = times) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
+var riseUp = 2
+var sinkingDown = 1
+var goalStart = 0
+var goalEnd = 10
+var day: Int = 0
 
-//Не разобрался, как вывести количество циклов?
+if  riseUp <= 0 || sinkingDown <= 0 || goalEnd <= 0 {
+    print ("Введено некорректное значение!")
+} else {
+    while goalStart < goalEnd  {
+    goalStart += riseUp - sinkingDown
+    day += 1
+}
+print("Через \(day) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
+}
+
+
 
 //var riseUp = 3
 //var sinkingDown = 1
