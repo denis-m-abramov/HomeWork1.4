@@ -130,31 +130,6 @@ for i in 1... {
   5.1 На 10 метровый столб лезет черепашка. За день она забирается на два метра, за ночь съезжает на 1. Определите при помощи цикла, через сколько дней она заберетсья на столб. Подумайте над тем, какой цикл использовать в этой ситуации.
  */
 
-//var riseUp = 2
-//var sinkingDown = 1
-//var goalStart = 0
-//var goalEnd = 10
-//var day: Int = 0
-//
-//if  riseUp <= 0 || sinkingDown < 0 || goalEnd <= 0 {
-//    print ("Введено некорректное значение!")
-//} else {
-//    while goalStart < goalEnd  {
-//    goalStart += riseUp
-//  //      print(goalStart)
-//        if goalStart < goalEnd {
-//            goalStart -= sinkingDown
-// //           print(goalStart)
-//            day += 1
-////            print("день \(day)")
-//        }
-//}
-//    day += 1
-//    print("Через \(day) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
-//}
-
-
-
 var riseUp = 2
 var sinkingDown = 1
 var goalStart = 0
@@ -163,25 +138,50 @@ var day: Int = 0
 
 if  riseUp <= 0 || sinkingDown < 0 || goalEnd <= 0 {
     print ("Введено некорректное значение!")
-} else if goalStart < goalEnd {
-    for _ in 1... {
-    goalStart += riseUp
-      print(goalStart)
-        
-      if goalStart < goalEnd {
-          goalStart -= sinkingDown
-            print(goalStart)
-          day += 1
-            print("день \(day)")
-      } else {
-        //Как отсюда выйти в нижний else?
-      }
-        //Отсюда надо выйти из цикла в условие выше goalStart < goalEnd для проверки, прежде чем приступать к новому циклу
-    }
 } else {
+    while goalStart < goalEnd  {
+    goalStart += riseUp
+  //      print(goalStart)
+        if goalStart < goalEnd {
+            goalStart -= sinkingDown
+ //           print(goalStart)
+            day += 1
+//            print("день \(day)")
+        }
+}
     day += 1
     print("Через \(day) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
 }
+
+
+
+//var riseUp = 2
+//var sinkingDown = 1
+//var goalStart = 0
+//var goalEnd = 10
+//var day: Int = 0
+//
+//if  riseUp <= 0 || sinkingDown < 0 || goalEnd <= 0 {
+//    print ("Введено некорректное значение!")
+//} else if goalStart < goalEnd {
+//    for _ in 1... {
+//    goalStart += riseUp
+//      print(goalStart)
+//
+//      if goalStart < goalEnd {
+//          goalStart -= sinkingDown
+//            print(goalStart)
+//          day += 1
+//            print("день \(day)")
+//      } else {
+//        //Как отсюда выйти в нижний else?
+//      }
+//        //Отсюда надо выйти из цикла в условие выше goalStart < goalEnd для проверки, прежде чем приступать к новому циклу
+//    }
+//} else {
+//    day += 1
+//    print("Через \(day) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
+//}
 
 /*:
  ### Задание 6
