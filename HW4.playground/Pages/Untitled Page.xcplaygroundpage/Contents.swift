@@ -11,19 +11,25 @@ import UIKit
  1.2 Выведите результат на консоль в таком виде: "Сумма вклада через <... > лет увеличится на <...> и составит <...>"
  */
 
-var deposit: Double = 500_000                   //сумма депозита в рублях
-var period = 5                                  //количество лет вклада
-var rate: Double = 11                          //ставка в % в год
+let deposit: Double = 500_000                   //сумма депозита в рублях
+let period = 5                                  //количество лет вклада
+let rate: Double = 11                          //ставка в % в год
 var depositGrowth: Double = deposit         //сумма депозита с учетом сложного процента
 
 if deposit <= 0 || period <= 0 || rate <= 0 {
     print("Введено некорректное значение!")
 } else {
-    for _ in (1...period) {
-    depositGrowth *= rate / 100 + 1
-}
-    depositGrowth *= 1000.rounded() / 1000       //округление до тысячных
-    let profit = ((depositGrowth - deposit) * 1000).rounded() / 1000 //сумма дохода
+    for _ in 1...period {
+        depositGrowth *= rate / 100 + 1
+    }
+    
+    String(depositGrowth)
+    String(format: "%.3f", depositGrowth)   //округление до тысячных
+    
+    let profit = depositGrowth - deposit    //сумма дохода
+    String(profit)
+    String(format: "%.3f", profit)
+    
     print("Сумма вклада \(deposit) рублей через \(period) лет увеличится на \(profit) рублей и составит \(depositGrowth) рублей")
 }
 
@@ -45,9 +51,9 @@ if  base < 0 || power < 0 {
     result = 1
     print("\(base) в \(power) степени равно \(result)")
 } else {
-    for _ in (1..<power) {
-    result *= base
-}
+    for _ in 1..<power {
+        result *= base
+    }
     print("\(base) в \(power) степени равно \(result)")
 }
 /*:
@@ -57,17 +63,17 @@ if  base < 0 || power < 0 {
 //var arrayOne = Array<Int>(-20...20)
 //: 3.2 Выведите на консоль все четные числа из массива
 
-var arrayOne = Array<Int>(-20...20)
-var numberFirstArray = arrayOne.first
-var numberLastArray = arrayOne.last
-var arrayTwo = Array<Int>()
+let numberFirst = -10
+let numberLast = 10
+var arrayOne = Array<Int>()
 
-for i in numberFirstArray!...numberLastArray! {
+for i in numberFirst...numberLast {
     if i % 2 == 0 {
-    arrayTwo.append(i)
-  }
+        arrayOne.append(i)
+    }
 }
-print(arrayTwo)
+print(arrayOne)
+
 
 
 //Альтернативный вариант 1 (из интернета)
@@ -99,41 +105,38 @@ print(arrayTwo)
 
 //: 3.3 Используя оператор Continue выведите на консоль все нечетные числа из массива. Оператор continue предназначен для перехода к очередной итерации, игнорируя следующий за ним код. Т.е. вам нужно выполнить проверку на четность числа, и если оно оказалось четным перейти к следующей итерации.
 
-var arrayThree = Array<Int>(-20...20)
-var numberFirstArrayThree = arrayThree.first
-var numberLastArrayThree = arrayThree.last
-var arrayFour = Array<Int>()
+let numberFirstTwo = -10
+let numberLastTwo = 10
+var arrayTwo = Array<Int>()
 
-for i in numberFirstArrayThree!...numberLastArrayThree! {
+for i in numberFirstTwo...numberLastTwo {
     if i % 2 == 0 {
         continue
     } else {
-        arrayFour.append(i)
+        arrayTwo.append(i)
     }
 }
-print(arrayFour)
+print(arrayTwo)
 
 //: ### Задание 4
 //: 4.1 Создайте цикл (интревал можно задать от 1 до 10) в котором будет случайным образом вычисляться число в пределах от 1 до 10. Если число будет равно 5, выведите на коносль сообщение с номером итерации, например (Что бы выпало число 5 понадобилось 3 итерации) и остановите цикл. Для остановки цикла используйте оператор breack. Оператор break предназначен для досрочного завершения работы цикла. При этом весь последующий код в теле цикла игнорируется.
 
 for i in 1... {
-        let randNum = Int(arc4random_uniform(100))
-        if randNum == 5 {
-    print("Чтобы выпало число \(randNum) понадобилось \(i) итерации(й)")
-    break }
-    }
-
-//Непонятно, как ограничить выбор рандомного числа в пределах от 1 до 10?
+    let randNum = Int.random(in: 1...10)
+    if randNum == 5 {
+        print("Чтобы выпало число \(randNum) понадобилось \(i) итерации(й)")
+        break }
+}
 
 /*:
  ### Задание 5
   5.1 На 10 метровый столб лезет черепашка. За день она забирается на два метра, за ночь съезжает на 1. Определите при помощи цикла, через сколько дней она заберетсья на столб. Подумайте над тем, какой цикл использовать в этой ситуации.
  */
 
-var riseUp = 2
-var sinkingDown = 1
+let riseUp = 2
+let sinkingDown = 1
 var goalStart = 0
-var goalEnd = 10
+let goalEnd = 10
 var day: Int = 0
 
 if  riseUp <= 0 || sinkingDown < 0 || goalEnd <= 0 {
@@ -152,36 +155,6 @@ if  riseUp <= 0 || sinkingDown < 0 || goalEnd <= 0 {
     day += 1
     print("Через \(day) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
 }
-
-
-
-//var riseUp = 2
-//var sinkingDown = 1
-//var goalStart = 0
-//var goalEnd = 10
-//var day: Int = 0
-//
-//if  riseUp <= 0 || sinkingDown < 0 || goalEnd <= 0 {
-//    print ("Введено некорректное значение!")
-//} else if goalStart < goalEnd {
-//    for _ in 1... {
-//    goalStart += riseUp
-//      print(goalStart)
-//
-//      if goalStart < goalEnd {
-//          goalStart -= sinkingDown
-//            print(goalStart)
-//          day += 1
-//            print("день \(day)")
-//      } else {
-//        //Как отсюда выйти в нижний else?
-//      }
-//        //Отсюда надо выйти из цикла в условие выше goalStart < goalEnd для проверки, прежде чем приступать к новому циклу
-//    }
-//} else {
-//    day += 1
-//    print("Через \(day) дня(-ей) черепашка заберётся на \(goalEnd)-метровый столб")
-//}
 
 /*:
  ### Задание 6
@@ -208,7 +181,8 @@ for _ in items {
 print("36")
 // Конец алгоритма
 
-/* Массив состоит из 2-х элементов, которые выполняют по 4 операции в общем цикле: n * (n + n) + n * (n + n) = n^2 + n^2 + n^2 + n^2 = 4 * n^2:
+/* Массив состоит из 2-х элементов, которые выполняют по 4 операции в общем цикле:
+ 1 + n * (n + n) + n * (n + n) + 1 =  1 + n^2 + n^2 + n^2 + n^2 + 1 =  2 4+ 4 * n^2:
  => отбрасываем числовое значение n^2
  => максимальная степень n^2
  => сложность будет O(n^2)
@@ -236,12 +210,14 @@ print("36")
  
  */
 
-var a = [2, 1, 3, 5, 3, 2]
-a.count
+let a = [2, 1, 3, 5, 3, 2]
+var numbersSet = Set<Int>()
 
-/*
- 1) Определяем повторяющиеся элементы в массиве, если их нет, то ничего не делаем. Если есть, то п. 2.
- 2) Определяем количество повторяющихся пар элементов, если одна пара, то выводим в консоль ее значение, если больше 2-х повторяющихся пар, то п. 3.
- 3) Определяем индексы последних повторяющихся элементов пар в массиве.
- 4) Сравниваем  эти индексы, значение меньшего индекса выводим в консоль.
- */
+for number in a {
+    if numbersSet.contains(number) {
+        print(number)
+        break
+    } else {
+        numbersSet.insert(number)
+    }
+}
