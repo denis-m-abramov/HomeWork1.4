@@ -1,5 +1,9 @@
 import UIKit
-
+let formatter = NumberFormatter()
+formatter.numberStyle = NumberFormatter.Style.decimal
+formatter.roundingMode = NumberFormatter.RoundingMode.up
+formatter.maximumFractionDigits = 3
+formatter.minimumFractionDigits = 3
 //:  [Сылка на тесты](https://docs.google.com/forms/d/e/1FAIpQLSd1u0QO7NUHombGhJkB0r0o8rsfGvUuVJmMbfWd-2nCbhOaAA/viewform)
 
 //: ## Home Work 4
@@ -23,14 +27,14 @@ if deposit <= 0 || period <= 0 || rate <= 0 {
         depositGrowth *= rate / 100 + 1
     }
     
-    String(depositGrowth)
-    String(format: "%.3f", depositGrowth)   //округление до тысячных
+    formatter.string(from: NSNumber(value: depositGrowth))
     
     let profit = depositGrowth - deposit    //сумма дохода
-    String(profit)
-    String(format: "%.3f", profit)
+    formatter.string(from: NSNumber(value: profit))
     
     print("Сумма вклада \(deposit) рублей через \(period) лет увеличится на \(profit) рублей и составит \(depositGrowth) рублей")
+    
+    print("Сумма вклада \(deposit) рублей через \(period) лет увеличится на \(formatter.string(from: NSNumber(value: profit))!) рублей и составит \(formatter.string(from: NSNumber(value: depositGrowth))!) рублей")
 }
 
 /*:
